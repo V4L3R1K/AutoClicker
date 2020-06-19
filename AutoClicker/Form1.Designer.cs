@@ -121,6 +121,7 @@
             0,
             0,
             0});
+            this.NumericUpDownNumberOfClicks.ValueChanged += new System.EventHandler(this.NumericUpDownNumberOfClicks_ValueChanged);
             // 
             // NumericUpDownY
             // 
@@ -189,18 +190,18 @@
             this.LabelClickedTimes.AutoSize = true;
             this.LabelClickedTimes.Location = new System.Drawing.Point(12, 195);
             this.LabelClickedTimes.Name = "LabelClickedTimes";
-            this.LabelClickedTimes.Size = new System.Drawing.Size(153, 13);
+            this.LabelClickedTimes.Size = new System.Drawing.Size(158, 13);
             this.LabelClickedTimes.TabIndex = 11;
-            this.LabelClickedTimes.Text = "Clicked 0 times of 1, 1 click left";
+            this.LabelClickedTimes.Text = "Clicked 0 times of 1, 1 clicks left";
             // 
             // LabelClickedTime
             // 
             this.LabelClickedTime.AutoSize = true;
             this.LabelClickedTime.Location = new System.Drawing.Point(12, 208);
             this.LabelClickedTime.Name = "LabelClickedTime";
-            this.LabelClickedTime.Size = new System.Drawing.Size(144, 13);
+            this.LabelClickedTime.Size = new System.Drawing.Size(149, 13);
             this.LabelClickedTime.TabIndex = 12;
-            this.LabelClickedTime.Text = "0 seconds of 1, 1 second left";
+            this.LabelClickedTime.Text = "0 seconds of 1, 1 seconds left";
             // 
             // MainForm
             // 
