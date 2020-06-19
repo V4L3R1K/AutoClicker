@@ -181,6 +181,7 @@
             // ProgressBarClickedTimes
             // 
             this.ProgressBarClickedTimes.Location = new System.Drawing.Point(13, 169);
+            this.ProgressBarClickedTimes.Maximum = 1;
             this.ProgressBarClickedTimes.Name = "ProgressBarClickedTimes";
             this.ProgressBarClickedTimes.Size = new System.Drawing.Size(291, 23);
             this.ProgressBarClickedTimes.TabIndex = 10;
