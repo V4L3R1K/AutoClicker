@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using System.Diagnostics;
+using System.IO;
 
 namespace AutoClicker
 {
@@ -44,7 +44,7 @@ namespace AutoClicker
             else
             {
                 ClickTimer.Enabled = false;
-                ButtonStart.Text = "Start";
+                ButtonStartBasicMode.Text = "Start";
                 NumericUpDownInterval.Enabled = true;
                 NumericUpDownNumberOfClicks.Enabled = true;
                 NumericUpDownX.Enabled = true;
@@ -61,26 +61,29 @@ namespace AutoClicker
             LabelClickedTimes.Text = "Clicked " + Program.counter + " times of " + NumericUpDownNumberOfClicks.Value + ", " + (NumericUpDownNumberOfClicks.Value - Program.counter) + " clicks left";
         }
 
-        private void ButtonStart_Click(object sender, EventArgs e)
+        private void ButtonStartBasicMode_Click(object sender, EventArgs e)
         {
-            if (ButtonStart.Text == "Start")
+            if (RadioButtonModeBasic.Checked)
             {
-                NumericUpDownInterval.Enabled = false;
-                NumericUpDownNumberOfClicks.Enabled = false;
-                NumericUpDownX.Enabled = false;
-                NumericUpDownY.Enabled = false;
-                ButtonStart.Text = "Stop";
-                ClickTimer.Enabled = true;
-            }
-            else if (ButtonStart.Text == "Stop")
-            {
-                ClickTimer.Enabled = false;
-                ButtonStart.Text = "Start";
-                NumericUpDownInterval.Enabled = true;
-                NumericUpDownNumberOfClicks.Enabled = true;
-                NumericUpDownX.Enabled = true;
-                NumericUpDownY.Enabled = true;
-                Program.counter = 0;
+                if (ButtonStartBasicMode.Text == "Start")
+                {
+                    NumericUpDownInterval.Enabled = false;
+                    NumericUpDownNumberOfClicks.Enabled = false;
+                    NumericUpDownX.Enabled = false;
+                    NumericUpDownY.Enabled = false;
+                    ButtonStartBasicMode.Text = "Stop";
+                    ClickTimer.Enabled = true;
+                }
+                else if (ButtonStartBasicMode.Text == "Stop")
+                {
+                    ClickTimer.Enabled = false;
+                    ButtonStartBasicMode.Text = "Start";
+                    NumericUpDownInterval.Enabled = true;
+                    NumericUpDownNumberOfClicks.Enabled = true;
+                    NumericUpDownX.Enabled = true;
+                    NumericUpDownY.Enabled = true;
+                    Program.counter = 0;
+                }
             }
         }
 
@@ -93,6 +96,103 @@ namespace AutoClicker
         {
             LabelClickedTimes.Text = "Clicked " + Program.counter + " times of " + NumericUpDownNumberOfClicks.Value + ", " + (NumericUpDownNumberOfClicks.Value - Program.counter) + " clicks left";
             ProgressBarClickedTimes.Maximum = Convert.ToInt32(NumericUpDownNumberOfClicks.Value);
+        }
+
+        private void ButtonStartProgrammableMode_Click(object sender, EventArgs e)
+        {
+            Do(string.Join("",string.Join("",string.Join("", RichTextBoxProgram.Text.Split('\n')).Split(' ')).Split('\t')));
+        }
+
+        private void RadioButtonModeBasic_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RadioButtonModeBasic.Checked)
+            {
+                GroupBoxBasicMode.Enabled = true;
+            }
+            else
+            {
+                GroupBoxBasicMode.Enabled = false;
+            }
+        }
+
+        private void RadioButtonModeProgrammable_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RadioButtonModeProgrammable.Checked)
+            {
+                GroupBoxProgrammableMode.Enabled = true;
+            }
+            else
+            {
+                GroupBoxProgrammableMode.Enabled = false;
+            }
+        }
+
+        private void Do(string inputString)
+        {
+            bool alive = true;
+            while (alive)
+            {
+                if (inputString == string.Empty)
+                {
+                    alive = false;
+                }
+                if (inputString.StartsWith("x("))
+                {
+                    for (int i = 0; i < Convert.ToInt32(inputString.Split('(')[1].Split(')')[0]); i++)
+                    {
+                        string outputString = "";
+                        for (int j = inputString.IndexOf("{") + 1; j < inputString.LastIndexOf("}"); j++)
+                        {
+                            outputString += inputString[j];
+                        }
+                        Do(outputString);
+                    }
+                    inputString = inputString.Remove(0, inputString.LastIndexOf("}") + 1);
+                }
+                if (inputString.StartsWith("click("))
+                {
+                    SetCursorPos(Convert.ToInt32(inputString.Split('(')[1].Split(')')[0].Split(',')[1]), Convert.ToInt32(inputString.Split('(')[1].Split(')')[0].Split(',')[2]));
+                    if (inputString.Split('(')[1].Split(')')[0].Split(',')[0] == "lmb")
+                    {
+                        mouse_event(0x02, 0, 0, 0, 0);
+                        mouse_event(0x04, 0, 0, 0, 0);
+                    }
+                    else if(inputString.Split('(')[1].Split(')')[0].Split(',')[0] == "rmb")
+                    {
+                        mouse_event(0x08, 0, 0, 0, 0);
+                        mouse_event(0x10, 0, 0, 0, 0);
+                    }
+                    inputString = inputString.Remove(0, inputString.IndexOf(";") + 1);
+                }
+            }      
+        }
+
+        private void programmableModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormHelp formHelp = new FormHelp();
+            formHelp.Show();
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamReader reader = new StreamReader(openFileDialog.OpenFile()))
+                {
+                    RichTextBoxProgram.Text = reader.ReadToEnd();
+                }
+            }
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamWriter writer = new StreamWriter(saveFileDialog.OpenFile()))
+                {
+                    writer.Write(RichTextBoxProgram.Text);
+                }
+            }
         }
     }
 }

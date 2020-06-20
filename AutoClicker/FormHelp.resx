@@ -117,16 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="ClickTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="MenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>125, 17</value>
-  </metadata>
-  <metadata name="openFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>233, 17</value>
-  </metadata>
-  <metadata name="saveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>366, 17</value>
-  </metadata>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>----------
+If you want to click somewhere, use "click(button, x, y);"
+button - left or right mouse button, "lmb" or "rmb"
+x, y - position on screen, (0, 0) is top left corner
+Example (this line will do left mouse button click at x = 100 and y = 200):
+click(lmb, 100, 200);
+----------
+If you want to cycle something, use "x(iterations){code}"
+iterations - number of cycle iterations
+code - code that will be cycled
+Example (this code will click 100 times):
+x(100)
+{
+click(rmb, 400, 700);
+}
+----------
+You can also place cycle in another cycle
+Example:
+x(10)
+{
+click(rmb, 0, 400);
+x(30)
+{
+click(lmb, 10, 1500);
+}
+----------</value>
+  </data>
 </root>
