@@ -42,7 +42,9 @@
             this.CheckBoxAboveOtherWindows = new System.Windows.Forms.CheckBox();
             this.ProgressBarClickedTimes = new System.Windows.Forms.ProgressBar();
             this.LabelClickedTimes = new System.Windows.Forms.Label();
-            this.LabelClickedTime = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.RadioButtonLMB = new System.Windows.Forms.RadioButton();
+            this.RadioButtonRMB = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownInterval)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownNumberOfClicks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownY)).BeginInit();
@@ -56,7 +58,7 @@
             // 
             // ButtonStart
             // 
-            this.ButtonStart.Location = new System.Drawing.Point(12, 139);
+            this.ButtonStart.Location = new System.Drawing.Point(12, 177);
             this.ButtonStart.Name = "ButtonStart";
             this.ButtonStart.Size = new System.Drawing.Size(292, 23);
             this.ButtonStart.TabIndex = 0;
@@ -67,7 +69,7 @@
             // LabelInterval
             // 
             this.LabelInterval.AutoSize = true;
-            this.LabelInterval.Location = new System.Drawing.Point(12, 14);
+            this.LabelInterval.Location = new System.Drawing.Point(12, 29);
             this.LabelInterval.Name = "LabelInterval";
             this.LabelInterval.Size = new System.Drawing.Size(186, 13);
             this.LabelInterval.TabIndex = 1;
@@ -75,7 +77,7 @@
             // 
             // NumericUpDownInterval
             // 
-            this.NumericUpDownInterval.Location = new System.Drawing.Point(204, 12);
+            this.NumericUpDownInterval.Location = new System.Drawing.Point(204, 27);
             this.NumericUpDownInterval.Maximum = new decimal(new int[] {
             60000,
             0,
@@ -99,7 +101,7 @@
             // LabelNumberOfClicks
             // 
             this.LabelNumberOfClicks.AutoSize = true;
-            this.LabelNumberOfClicks.Location = new System.Drawing.Point(12, 40);
+            this.LabelNumberOfClicks.Location = new System.Drawing.Point(14, 55);
             this.LabelNumberOfClicks.Name = "LabelNumberOfClicks";
             this.LabelNumberOfClicks.Size = new System.Drawing.Size(86, 13);
             this.LabelNumberOfClicks.TabIndex = 3;
@@ -107,7 +109,7 @@
             // 
             // NumericUpDownNumberOfClicks
             // 
-            this.NumericUpDownNumberOfClicks.Location = new System.Drawing.Point(204, 38);
+            this.NumericUpDownNumberOfClicks.Location = new System.Drawing.Point(204, 53);
             this.NumericUpDownNumberOfClicks.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -125,7 +127,7 @@
             // 
             // NumericUpDownY
             // 
-            this.NumericUpDownY.Location = new System.Drawing.Point(204, 90);
+            this.NumericUpDownY.Location = new System.Drawing.Point(204, 105);
             this.NumericUpDownY.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -138,7 +140,7 @@
             // LabelY
             // 
             this.LabelY.AutoSize = true;
-            this.LabelY.Location = new System.Drawing.Point(12, 92);
+            this.LabelY.Location = new System.Drawing.Point(14, 107);
             this.LabelY.Name = "LabelY";
             this.LabelY.Size = new System.Drawing.Size(88, 13);
             this.LabelY.TabIndex = 7;
@@ -146,7 +148,7 @@
             // 
             // NumericUpDownX
             // 
-            this.NumericUpDownX.Location = new System.Drawing.Point(204, 64);
+            this.NumericUpDownX.Location = new System.Drawing.Point(204, 79);
             this.NumericUpDownX.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -159,7 +161,7 @@
             // LabelX
             // 
             this.LabelX.AutoSize = true;
-            this.LabelX.Location = new System.Drawing.Point(12, 66);
+            this.LabelX.Location = new System.Drawing.Point(14, 81);
             this.LabelX.Name = "LabelX";
             this.LabelX.Size = new System.Drawing.Size(88, 13);
             this.LabelX.TabIndex = 5;
@@ -170,7 +172,7 @@
             this.CheckBoxAboveOtherWindows.AutoSize = true;
             this.CheckBoxAboveOtherWindows.Checked = true;
             this.CheckBoxAboveOtherWindows.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxAboveOtherWindows.Location = new System.Drawing.Point(12, 116);
+            this.CheckBoxAboveOtherWindows.Location = new System.Drawing.Point(12, 131);
             this.CheckBoxAboveOtherWindows.Name = "CheckBoxAboveOtherWindows";
             this.CheckBoxAboveOtherWindows.Size = new System.Drawing.Size(128, 17);
             this.CheckBoxAboveOtherWindows.TabIndex = 9;
@@ -180,36 +182,58 @@
             // 
             // ProgressBarClickedTimes
             // 
-            this.ProgressBarClickedTimes.Location = new System.Drawing.Point(13, 169);
+            this.ProgressBarClickedTimes.Location = new System.Drawing.Point(12, 206);
             this.ProgressBarClickedTimes.Maximum = 1;
             this.ProgressBarClickedTimes.Name = "ProgressBarClickedTimes";
-            this.ProgressBarClickedTimes.Size = new System.Drawing.Size(291, 23);
+            this.ProgressBarClickedTimes.Size = new System.Drawing.Size(292, 23);
             this.ProgressBarClickedTimes.TabIndex = 10;
             // 
             // LabelClickedTimes
             // 
             this.LabelClickedTimes.AutoSize = true;
-            this.LabelClickedTimes.Location = new System.Drawing.Point(12, 195);
+            this.LabelClickedTimes.Location = new System.Drawing.Point(12, 232);
             this.LabelClickedTimes.Name = "LabelClickedTimes";
             this.LabelClickedTimes.Size = new System.Drawing.Size(158, 13);
             this.LabelClickedTimes.TabIndex = 11;
             this.LabelClickedTimes.Text = "Clicked 0 times of 1, 1 clicks left";
             // 
-            // LabelClickedTime
+            // menuStrip1
             // 
-            this.LabelClickedTime.AutoSize = true;
-            this.LabelClickedTime.Location = new System.Drawing.Point(12, 208);
-            this.LabelClickedTime.Name = "LabelClickedTime";
-            this.LabelClickedTime.Size = new System.Drawing.Size(149, 13);
-            this.LabelClickedTime.TabIndex = 12;
-            this.LabelClickedTime.Text = "0 seconds of 1, 1 seconds left";
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(316, 24);
+            this.menuStrip1.TabIndex = 12;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // RadioButtonLMB
+            // 
+            this.RadioButtonLMB.AutoSize = true;
+            this.RadioButtonLMB.Checked = true;
+            this.RadioButtonLMB.Location = new System.Drawing.Point(12, 154);
+            this.RadioButtonLMB.Name = "RadioButtonLMB";
+            this.RadioButtonLMB.Size = new System.Drawing.Size(110, 17);
+            this.RadioButtonLMB.TabIndex = 13;
+            this.RadioButtonLMB.TabStop = true;
+            this.RadioButtonLMB.Text = "Left mouse button";
+            this.RadioButtonLMB.UseVisualStyleBackColor = true;
+            // 
+            // RadioButtonRMB
+            // 
+            this.RadioButtonRMB.AutoSize = true;
+            this.RadioButtonRMB.Location = new System.Drawing.Point(130, 154);
+            this.RadioButtonRMB.Name = "RadioButtonRMB";
+            this.RadioButtonRMB.Size = new System.Drawing.Size(117, 17);
+            this.RadioButtonRMB.TabIndex = 14;
+            this.RadioButtonRMB.Text = "Right mouse button";
+            this.RadioButtonRMB.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(316, 230);
-            this.Controls.Add(this.LabelClickedTime);
+            this.ClientSize = new System.Drawing.Size(316, 254);
+            this.Controls.Add(this.RadioButtonRMB);
+            this.Controls.Add(this.RadioButtonLMB);
             this.Controls.Add(this.LabelClickedTimes);
             this.Controls.Add(this.ProgressBarClickedTimes);
             this.Controls.Add(this.CheckBoxAboveOtherWindows);
@@ -222,7 +246,9 @@
             this.Controls.Add(this.NumericUpDownInterval);
             this.Controls.Add(this.LabelInterval);
             this.Controls.Add(this.ButtonStart);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.ShowIcon = false;
@@ -252,7 +278,9 @@
         private System.Windows.Forms.CheckBox CheckBoxAboveOtherWindows;
         private System.Windows.Forms.ProgressBar ProgressBarClickedTimes;
         private System.Windows.Forms.Label LabelClickedTimes;
-        private System.Windows.Forms.Label LabelClickedTime;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.RadioButton RadioButtonLMB;
+        private System.Windows.Forms.RadioButton RadioButtonRMB;
     }
 }
 

@@ -29,8 +29,16 @@ namespace AutoClicker
             if (Program.counter < NumericUpDownNumberOfClicks.Value)
             {
                 SetCursorPos(Convert.ToInt32(NumericUpDownX.Value), Convert.ToInt32(NumericUpDownY.Value));
-                mouse_event(0x02, 0, 0, 0, 0);
-                mouse_event(0x04, 0, 0, 0, 0);
+                if (RadioButtonLMB.Checked)
+                {
+                    mouse_event(0x02, 0, 0, 0, 0);
+                    mouse_event(0x04, 0, 0, 0, 0);
+                }
+                else if (RadioButtonRMB.Checked)
+                {
+                    mouse_event(0x08, 0, 0, 0, 0);
+                    mouse_event(0x10, 0, 0, 0, 0);
+                }
                 Program.counter++;
             }
             else
@@ -44,7 +52,6 @@ namespace AutoClicker
                 Program.counter = 0;
             }
             LabelClickedTimes.Text = "Clicked " + Program.counter + " times of " + NumericUpDownNumberOfClicks.Value + ", " + (NumericUpDownNumberOfClicks.Value - Program.counter) + " clicks left";
-            LabelClickedTime.Text = (Program.counter * NumericUpDownInterval.Value / 1000) + " seconds of " + (NumericUpDownNumberOfClicks.Value * NumericUpDownInterval.Value / 1000) + ", " + (NumericUpDownNumberOfClicks.Value * NumericUpDownInterval.Value / 1000 - Program.counter * NumericUpDownInterval.Value / 1000) + " seconds left";
             ProgressBarClickedTimes.Value = Program.counter;
         }
 
@@ -52,7 +59,6 @@ namespace AutoClicker
         {
             ClickTimer.Interval = Convert.ToInt32(NumericUpDownInterval.Value);
             LabelClickedTimes.Text = "Clicked " + Program.counter + " times of " + NumericUpDownNumberOfClicks.Value + ", " + (NumericUpDownNumberOfClicks.Value - Program.counter) + " clicks left";
-            LabelClickedTime.Text = (Program.counter * NumericUpDownInterval.Value / 1000) + " seconds of " + (NumericUpDownNumberOfClicks.Value * NumericUpDownInterval.Value / 1000) + ", " + (NumericUpDownNumberOfClicks.Value * NumericUpDownInterval.Value / 1000 - Program.counter * NumericUpDownInterval.Value / 1000) + " seconds left";
         }
 
         private void ButtonStart_Click(object sender, EventArgs e)
@@ -86,7 +92,6 @@ namespace AutoClicker
         private void NumericUpDownNumberOfClicks_ValueChanged(object sender, EventArgs e)
         {
             LabelClickedTimes.Text = "Clicked " + Program.counter + " times of " + NumericUpDownNumberOfClicks.Value + ", " + (NumericUpDownNumberOfClicks.Value - Program.counter) + " clicks left";
-            LabelClickedTime.Text = (Program.counter * NumericUpDownInterval.Value / 1000) + " seconds of " + (NumericUpDownNumberOfClicks.Value * NumericUpDownInterval.Value / 1000) + ", " + (NumericUpDownNumberOfClicks.Value * NumericUpDownInterval.Value / 1000 - Program.counter * NumericUpDownInterval.Value / 1000) + " seconds left";
             ProgressBarClickedTimes.Maximum = Convert.ToInt32(NumericUpDownNumberOfClicks.Value);
         }
     }
