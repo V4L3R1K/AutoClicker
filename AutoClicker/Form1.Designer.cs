@@ -43,6 +43,11 @@
             this.ProgressBarClickedTimes = new System.Windows.Forms.ProgressBar();
             this.LabelClickedTimes = new System.Windows.Forms.Label();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.programmableModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RadioButtonLMB = new System.Windows.Forms.RadioButton();
             this.RadioButtonRMB = new System.Windows.Forms.RadioButton();
             this.RadioButtonModeBasic = new System.Windows.Forms.RadioButton();
@@ -51,11 +56,6 @@
             this.GroupBoxBasicMode = new System.Windows.Forms.GroupBox();
             this.GroupBoxProgrammableMode = new System.Windows.Forms.GroupBox();
             this.ButtonStartProgrammableMode = new System.Windows.Forms.Button();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.programmableModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownInterval)).BeginInit();
@@ -224,6 +224,44 @@
             this.MenuStrip.TabIndex = 12;
             this.MenuStrip.Text = "menuStrip1";
             // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.saveToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.programmableModeToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // programmableModeToolStripMenuItem
+            // 
+            this.programmableModeToolStripMenuItem.Name = "programmableModeToolStripMenuItem";
+            this.programmableModeToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.programmableModeToolStripMenuItem.Text = "Programmable mode";
+            this.programmableModeToolStripMenuItem.Click += new System.EventHandler(this.programmableModeToolStripMenuItem_Click);
+            // 
             // RadioButtonLMB
             // 
             this.RadioButtonLMB.AutoSize = true;
@@ -322,44 +360,6 @@
             this.ButtonStartProgrammableMode.Text = "Start";
             this.ButtonStartProgrammableMode.UseVisualStyleBackColor = true;
             this.ButtonStartProgrammableMode.Click += new System.EventHandler(this.ButtonStartProgrammableMode_Click);
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripMenuItem,
-            this.saveToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // openToolStripMenuItem
-            // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.openToolStripMenuItem.Text = "Open";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.saveToolStripMenuItem.Text = "Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.programmableModeToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // programmableModeToolStripMenuItem
-            // 
-            this.programmableModeToolStripMenuItem.Name = "programmableModeToolStripMenuItem";
-            this.programmableModeToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
-            this.programmableModeToolStripMenuItem.Text = "Programmable mode";
-            this.programmableModeToolStripMenuItem.Click += new System.EventHandler(this.programmableModeToolStripMenuItem_Click);
             // 
             // openFileDialog
             // 
