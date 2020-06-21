@@ -144,6 +144,13 @@ x(30)
 click(lmb, 10, 1500);
 }
 }
+----------
+If you want delay, use "wait(ms)"
+ms - delay time in milliseconds
+Example(delay 200ms between two clicks):
+click(lmb, 100, 600);
+wait(200);
+click(lmb, 100, 700);
 ----------</value>
   </data>
 </root>

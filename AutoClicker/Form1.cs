@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Threading;
 
 namespace AutoClicker
 {
@@ -136,7 +137,7 @@ namespace AutoClicker
                 {
                     alive = false;
                 }
-                if (inputString.StartsWith("x("))
+                else if (inputString.StartsWith("x("))
                 {
                     int closeIndex = 0;
                     for (int i = 0; i < Convert.ToInt32(inputString.Split('(')[1].Split(')')[0]); i++)
@@ -145,7 +146,7 @@ namespace AutoClicker
                         closeIndex = 0;
                         int openNum = 0;
                         int closeNum = 0;
-                        for(int j = inputString.IndexOf("{") + 1; j < inputString.Length; j++)
+                        for (int j = inputString.IndexOf("{") + 1; j < inputString.Length; j++)
                         {
                             if (inputString[j] == '{')
                             {
@@ -165,12 +166,11 @@ namespace AutoClicker
                         {
                             outputString += inputString[j];
                         }
-                        RichTextBoxProgram.AppendText(outputString);
                         Do(outputString);
                     }
                     inputString = inputString.Remove(0, closeIndex + 1);
                 }
-                if (inputString.StartsWith("click("))
+                else if (inputString.StartsWith("click("))
                 {
                     SetCursorPos(Convert.ToInt32(inputString.Split('(')[1].Split(')')[0].Split(',')[1]), Convert.ToInt32(inputString.Split('(')[1].Split(')')[0].Split(',')[2]));
                     if (inputString.Split('(')[1].Split(')')[0].Split(',')[0] == "lmb")
@@ -178,14 +178,24 @@ namespace AutoClicker
                         mouse_event(0x02, 0, 0, 0, 0);
                         mouse_event(0x04, 0, 0, 0, 0);
                     }
-                    else if(inputString.Split('(')[1].Split(')')[0].Split(',')[0] == "rmb")
+                    else if (inputString.Split('(')[1].Split(')')[0].Split(',')[0] == "rmb")
                     {
                         mouse_event(0x08, 0, 0, 0, 0);
                         mouse_event(0x10, 0, 0, 0, 0);
                     }
                     inputString = inputString.Remove(0, inputString.IndexOf(";") + 1);
                 }
-            }      
+                else if (inputString.StartsWith("wait("))
+                {
+                    Thread.Sleep(Convert.ToInt32(inputString.Split('(')[1].Split(')')[0]));
+                    inputString = inputString.Remove(0, inputString.IndexOf(";") + 1);
+                }
+                else
+                {
+                    MessageBox.Show("Something is wrong in code", "Error");
+                    return;
+                }
+            }
         }
 
         private void programmableModeToolStripMenuItem_Click(object sender, EventArgs e)
